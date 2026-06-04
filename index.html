@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Shema Irene Patrick - Full-Stack Developer Portfolio">
   <meta name="author" content="Shema Irene Patrick">
-  <title>Shema Irene Patrick | Full-Stack Developer</title>
+  <title>Shema Irene Patrick | Full-Stack Developer Portfolio</title>
   <style>
     * {
       margin: 0;
@@ -24,7 +24,6 @@
       --accent: #059669;
       --accent-dark: #047857;
       --accent-light: #a7f3d0;
-      --accent-glow: #10b981;
       --border: #d1fae5;
       --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
       --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
@@ -162,34 +161,76 @@
       align-items: center;
     }
 
-    .lang-switch {
-      display: flex;
-      gap: 0.4rem;
+    /* Language Dropdown */
+    .language-dropdown {
+      position: relative;
+      display: inline-block;
     }
 
-    .lang-btn {
-      background: transparent;
+    .globe-btn {
+      background: var(--bg-secondary);
       border: 1px solid var(--border);
-      color: var(--text-primary);
-      padding: 0.3rem 0.7rem;
-      border-radius: 50px;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
       cursor: pointer;
-      font-size: 0.75rem;
-      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
       transition: all 0.3s;
     }
 
-    .lang-btn:hover {
-      border-color: var(--accent);
+    .globe-btn:hover {
       transform: scale(1.05);
       background: var(--accent);
-      color: white;
     }
 
-    .lang-btn.active {
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      right: 0;
+      top: 45px;
+      background: var(--bg-card);
+      min-width: 120px;
+      border-radius: 12px;
+      box-shadow: var(--shadow-lg);
+      border: 1px solid var(--border);
+      z-index: 1001;
+      overflow: hidden;
+    }
+
+    .dropdown-content.show {
+      display: block;
+      animation: fadeIn 0.2s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .dropdown-content button {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      background: none;
+      border: none;
+      text-align: left;
+      cursor: pointer;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--text-primary);
+      transition: all 0.2s;
+    }
+
+    .dropdown-content button:hover {
+      background: var(--accent-light);
+      color: var(--accent-dark);
+    }
+
+    .dropdown-content button.active {
       background: var(--accent);
       color: white;
-      border-color: var(--accent);
     }
 
     .theme-toggle {
@@ -584,7 +625,8 @@
 
     .project-links {
       display: flex;
-      gap: 1rem;
+      gap: 1.5rem;
+      margin-top: 0.5rem;
     }
 
     .project-links a {
@@ -593,10 +635,14 @@
       font-size: 0.9rem;
       font-weight: 600;
       transition: all 0.3s;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
     }
 
     .project-links a:hover {
       transform: translateX(5px);
+      color: var(--accent-dark);
     }
 
     /* Achievements */
@@ -795,13 +841,17 @@
       <a href="#projects">Projects</a>
       <a href="#achievements">Achievements</a>
       <a href="#contact">Contact</a>
-      <a href="https://github.com/DevCore18(shema)" target="_blank" class="github-nav">GitHub →</a>
+      <a href="https://github.com/DevCore18" target="_blank" class="github-nav">GitHub →</a>
     </div>
     <div class="controls">
-      <div class="lang-switch">
-        <button class="lang-btn active" data-lang="en">EN</button>
-        <button class="lang-btn" data-lang="kin">KIN</button>
-        <button class="lang-btn" data-lang="fr">FR</button>
+      <!-- Language Dropdown with Globe Icon -->
+      <div class="language-dropdown">
+        <button class="globe-btn" id="globeBtn">🌐</button>
+        <div class="dropdown-content" id="langDropdown">
+          <button data-lang="en" class="active">🇬🇧 English</button>
+          <button data-lang="kin">🇷🇼 Kinyarwanda</button>
+          <button data-lang="fr">🇫🇷 Français</button>
+        </div>
       </div>
       <button class="theme-toggle" id="themeToggleBtn">🌙</button>
     </div>
@@ -921,10 +971,11 @@
         <h2 class="section-title" id="projectsTitle">Featured Projects</h2>
       </div>
       <div class="projects-grid">
+        <!-- Project 1 -->
         <div class="project-card">
           <div class="project-img">🏪</div>
           <div class="project-content">
-            <h3 class="project-title">E-Commerce Platform</h3>
+            <h3 class="project-title">E-Shop Marketplace</h3>
             <p class="project-desc">Complete e-commerce solution with cart, payment integration, and admin dashboard.</p>
             <div class="project-tech">
               <span>React</span>
@@ -933,11 +984,12 @@
               <span>Stripe</span>
             </div>
             <div class="project-links">
-              <a href="#" onclick="showToast('Live demo available soon!'); return false;">Live Demo →</a>
-              <a href="https://github.com/DevCore18(shema)" target="_blank">GitHub →</a>
+              <a href="https://eshop-demo.vercel.app" target="_blank">🚀 Live Demo →</a>
+              <a href="https://github.com/DevCore18/ecommerce-platform" target="_blank">📂 GitHub Repo →</a>
             </div>
           </div>
         </div>
+        <!-- Project 2 -->
         <div class="project-card">
           <div class="project-img">📊</div>
           <div class="project-content">
@@ -949,15 +1001,16 @@
               <span>PostgreSQL</span>
             </div>
             <div class="project-links">
-              <a href="#" onclick="showToast('Live demo available soon!'); return false;">Live Demo →</a>
-              <a href="https://github.com/DevCore18(shema)" target="_blank">GitHub →</a>
+              <a href="https://analytics-demo.vercel.app" target="_blank">🚀 Live Demo →</a>
+              <a href="https://github.com/DevCore18/analytics-dashboard" target="_blank">📂 GitHub Repo →</a>
             </div>
           </div>
         </div>
+        <!-- Project 3 -->
         <div class="project-card">
           <div class="project-img">💬</div>
           <div class="project-content">
-            <h3 class="project-title">Youth connect</h3>
+            <h3 class="project-title">Chat message</h3>
             <p class="project-desc">Real-time messaging app with group chats, file sharing, and notifications.</p>
             <div class="project-tech">
               <span>Socket.io</span>
@@ -965,8 +1018,8 @@
               <span>Firebase</span>
             </div>
             <div class="project-links">
-              <a href="#" onclick="showToast('Live demo available soon!'); return false;">Live Demo →</a>
-              <a href="https://github.com/DevCore18(shema)" target="_blank">GitHub →</a>
+              <a href="https://chatconnect-demo.vercel.app" target="_blank">🚀 Live Demo →</a>
+              <a href="https://github.com/DevCore18/chat-application" target="_blank">📂 GitHub Repo →</a>
             </div>
           </div>
         </div>
@@ -1046,9 +1099,6 @@
   </section>
 </main>
 
-<footer class="footer">
-  <p>© 2026 Shema Irene Patrick | Crafted with ☕ and ❤️ | Full-Stack Developer</p>
-</footer>
 
 <script>
   // Toast Notification
@@ -1090,10 +1140,25 @@
     const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
     if (isDark) {
       setTheme('light');
-      showToast('🌞 Light mode activated');
+      showToast('Light mode activated');
     } else {
       setTheme('dark');
-      showToast('🌙 Dark mode activated');
+      showToast('Dark mode activated');
+    }
+  });
+
+  // Language Dropdown
+  const globeBtn = document.getElementById('globeBtn');
+  const langDropdown = document.getElementById('langDropdown');
+  
+  globeBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    langDropdown.classList.toggle('show');
+  });
+  
+  document.addEventListener('click', (e) => {
+    if (!globeBtn.contains(e.target) && !langDropdown.contains(e.target)) {
+      langDropdown.classList.remove('show');
     }
   });
 
@@ -1191,7 +1256,7 @@
     document.getElementById('contactDesc').textContent = t.contactDesc;
     document.getElementById('sendBtn').textContent = t.sendBtn;
     
-    document.querySelectorAll('.lang-btn').forEach(btn => {
+    document.querySelectorAll('.dropdown-content button').forEach(btn => {
       btn.classList.remove('active');
       if (btn.getAttribute('data-lang') === lang) {
         btn.classList.add('active');
@@ -1199,9 +1264,10 @@
     });
     
     showToast(`Switched to ${lang.toUpperCase()}`);
+    langDropdown.classList.remove('show');
   }
 
-  document.querySelectorAll('.lang-btn').forEach(btn => {
+  document.querySelectorAll('.dropdown-content button').forEach(btn => {
     btn.addEventListener('click', () => {
       switchLanguage(btn.getAttribute('data-lang'));
     });
